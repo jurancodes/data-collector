@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-host
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_pwd_root
+      MYSQL_DATABASE: data
+      MYSQL_USER: data_collector
+      MYSQL_PASSWORD: mysql_pwd_user
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - data_network
+
+volumes:
+  mysql_data:
+
+networks:
+  data_network:
+    driver: bridge

@@ -1,0 +1,20 @@
+version: '3'
+services:
+  python-app:
+    image: nba-player-loader
+    container_name: nba-player-loader
+    environment:
+      - MYSQL_HOST=mysql-host
+      - MYSQL_PORT=3306
+      - MYSQL_USER=data_collector
+      - MYSQL_PASSWORD=mysql_pwd_user
+      - MYSQL_DATABASE=data
+      - PER_PAGE=25
+      - TOTAL_PAGES=50
+    networks:
+      - infra_data_network
+
+networks:
+  infra_data_network:
+    external: true
+
